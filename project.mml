@@ -1,0 +1,119 @@
+{
+  "bounds": [
+    5.8035,
+    45.6889,
+    10.6046,
+    47.8777
+  ],
+  "center": [
+    8.3276,
+    46.969,
+    8
+  ],
+  "format": "png",
+  "interactivity": {
+    "fields": []
+  },
+  "minzoom": 0,
+  "maxzoom": 22,
+  "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+  "Stylesheet": [
+    "names.mss",
+    "style.mss"
+  ],
+  "Layer": [
+    {
+      "Datasource": {
+        "type": "postgis",
+        "table": "(with schweiz as (select way from planet_osm_polygon  where osm_id=-51701) select p.name as n, p.way  as  pw ,m.match_road from planet_osm_polygon p, muni_name_stats m, schweiz where admin_level = '8' and p.tags->'swisstopo:BFS_NUMMER'=cast(m.muni_ref as text) and p.way @ schweiz.way) as data",
+        "extent": "646440.68,5736119.69,1194143.11,6110057.76",
+        "key_field": "",
+        "geometry_field": "pw",
+        "dbname": "gis",
+        "host": "172.16.1.6",
+        "user": "www-data",
+        "id": "muni_p",
+        "project": "namestats",
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+        "extent_cache": "auto"
+      },
+      "id": "muni_p",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "name": "muni_p",
+      "geometry": "polygon",
+      "extent": [
+        5.807075431206167,
+        45.72330943573399,
+        10.727170071390189,
+        48.01924887830482
+      ],
+      "advanced": {}
+    },
+    {
+      "Datasource": {
+        "type": "postgis",
+        "table": "(with schweiz as (select way from planet_osm_polygon where osm_id=-51701) select p.waterway, p.way as pw from planet_osm_polygon p , schweiz where  (p.natural = 'water')  and p.way @ schweiz.way) as data",
+        "extent": "646440.68,5736119.69,1194143.11,6110057.76",
+        "key_field": "",
+        "geometry_field": "pw",
+        "dbname": "gis",
+        "host": "172.16.1.6",
+        "user": "www-data",
+        "extent_cache": "auto",
+        "id": "water_p",
+        "project": "namestats",
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+      },
+      "id": "water_p",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "name": "water_p",
+      "extent": [
+        5.807075431206167,
+        45.72330943573399,
+        10.727170071390189,
+        48.01924887830482
+      ],
+      "advanced": {},
+      "geometry": "polygon"
+    },
+    {
+      "extent": [
+        5.045573924184161,
+        43.49453646494208,
+        16.306527069648478,
+        48.348597237927905
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(with schweiz as (select way from planet_osm_polygon  where osm_id=-51701) select p.name as n, p.way  as  pw ,m.match_road from planet_osm_polygon p, muni_name_stats m, schweiz where admin_level = '8' and p.tags->'swisstopo:BFS_NUMMER'=cast(m.muni_ref as text) and p.way @ schweiz.way) as data",
+        "key_field": "",
+        "geometry_field": "pw",
+        "extent_cache": "auto",
+        "extent": "561670.72,5387550.85,1815234.29,6165046.18",
+        "dbname": "gis",
+        "host": "172.16.1.6",
+        "user": "www-data",
+        "id": "names",
+        "project": "namestats",
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+      },
+      "id": "names",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "names",
+      "geometry": "polygon"
+    }
+  ],
+  "scale": 1,
+  "metatile": 2,
+  "name": "namestats",
+  "description": "",
+  "legend": "",
+  "attribution": ""
+}

@@ -1,0 +1,11 @@
+#names
+{
+  [zoom >= 12]
+  {
+    text-face-name: 'Arial Italic';
+    text-placement: point;
+    text-name: '[n]';
+    text-size: 10;line-width: 1;text-halo-radius: 2;   
+    text-opacity: 0;
+  }
+}
